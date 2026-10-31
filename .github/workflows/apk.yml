@@ -1,1 +1,44 @@
-
+name: APK oluştur
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zip'i aç
+        run: unzip -o gladius-proje.zip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: İmza anahtarı
+        run: |
+          mkdir -p ~/.android
+          echo "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" | base64 -d > ~/.android/debug.keystore
+      - name: Android projesini hazırla
+        run: |
+          mkdir -p app/www
+          cp index.html app/www/index.html
+          cd app
+          npm init -y
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npx cap init Gladius com.alidinler.gladius --web-dir www
+          npx cap add android
+          sed -i 's/<activity/<activity android:screenOrientation="sensorLandscape"/' android/app/src/main/AndroidManifest.xml
+      - name: APK derle
+        run: |
+          cd app/android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk ../../Gladius.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Gladius ${{ github.run_number }}
+          files: Gladius.apk
