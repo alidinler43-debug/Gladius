@@ -27,7 +27,7 @@ jobs:
           cp index.html app/www/index.html
           cd app
           npm init -y
-          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 @capacitor/haptics@6
           npx cap init Gladius com.alidinler.gladius --web-dir www
           npx cap add android
           sed -i 's/<activity/<activity android:screenOrientation="sensorLandscape"/' android/app/src/main/AndroidManifest.xml
